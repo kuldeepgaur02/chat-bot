@@ -170,3 +170,26 @@
         border-radius: 0px;
     }
 }
+
+.botTextLoader span:before {
+    animation: dots 2s linear infinite;
+    content: '';
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  @keyframes dots {
+    
+    0%, 20% {
+      content: '.';
+    }
+    40% {
+      content: '..';
+    }
+    60% {
+      content: '...';
+    }
+    90%, 100% {
+      content: '.';
+    }
+}
