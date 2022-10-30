@@ -51,14 +51,18 @@ firstBotMessage();
 // Retrieves the response
 async function getHardResponse(userText) {
     let botLoader = '<p class="botTextLoader botText"><span></span></p>';
-    $("#chatbox").append(botLoader);
 
+    $("#chatbox").append(botLoader);
+    $("#textInput").prop("disabled", true);
+    
     let botResponse = await getBotResponse(userText);
     $("p").remove(".botTextLoader");
+    $("#textInput").prop("disabled", false);
+
     let botHtml = '<p class="botText"><span>' + botResponse + '</span></p>';
     $("#chatbox").append(botHtml);
 
-    document.getElementById("chat-bar-bottom").scrollIntoView(true);
+    // document.getElementById("chat-bar-bottom").scrollIntoView(true);
 }
 
 //Gets the text text from the input box and processes it
@@ -89,10 +93,10 @@ function buttonSendText(sampleText) {
     $("#chatbox").append(userHtml);
     document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
-    //Uncomment this if you want the bot to respond to this buttonSendText event
-    // setTimeout(() => {
-    //     getHardResponse(sampleText);
-    // }, 1000)
+    // Uncomment this if you want the bot to respond to this buttonSendText event
+    setTimeout(() => {
+        getHardResponse(sampleText);
+    }, 1000)
 }
 
 function sendButton() {
