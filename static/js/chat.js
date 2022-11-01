@@ -33,7 +33,7 @@ function getTime() {
     return time;
 }
 
-qs = ["Hello how are you doing today ?","How do you describe the "]
+qs = ["How do you describe your mood today?"]
 
 // Gets the first message
 function firstBotMessage() {
@@ -65,7 +65,7 @@ async function getHardResponse(userText) {
     // document.getElementById("chat-bar-bottom").scrollIntoView(true);
 }
 
-//Gets the text text from the input box and processes it
+//Gets the text input from the input box and processes it
 function getResponse() {
     let userText = $("#textInput").val();
 
@@ -83,28 +83,38 @@ function getResponse() {
         getHardResponse(userText);
     }, 1000)
 
+
 }
 
 // Handles sending text via button clicks
-function buttonSendText(sampleText) {
-    let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
+// function buttonSendText(sampleText) {
+//     let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
 
-    $("#textInput").val("");
-    $("#chatbox").append(userHtml);
-    document.getElementById("chat-bar-bottom").scrollIntoView(true);
+//     $("#textInput").val("");
+//     $("#chatbox").append(userHtml);
+//     document.getElementById("chat-bar-bottom").scrollIntoView(true);
 
-    // Uncomment this if you want the bot to respond to this buttonSendText event
-    setTimeout(() => {
-        getHardResponse(sampleText);
-    }, 1000)
-}
+//     // Uncomment this if you want the bot to respond to this buttonSendText event
+//     setTimeout(() => {
+//         getHardResponse(sampleText);
+//     }, 1000)
+// }
 
 function sendButton() {
     getResponse();
 }
 
 function heartButton() {
-    buttonSendText("❤️")
+    let userHtml = '<p class="userText"><span>' + "❤️" + '</span></p>';
+
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+
+    let botHtml = '<p class="botText"><span>' + "😍" + '</span></p>';
+    setTimeout(()=>{
+        $("#chatbox").append(botHtml);
+    }, 1000)
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
 }
 
 // Press enter to send a message
